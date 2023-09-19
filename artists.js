@@ -15,17 +15,17 @@ async function getArtists() {
   return data;
 }
 
-async function getAlbums() {
-  const response = await fetch(`${endpoint}/albums`);
-  const data = await response.json();
-  return data;
-}
+// async function getAlbums() {
+//   const response = await fetch(`${endpoint}/albums`);
+//   const data = await response.json();
+//   return data;
+// }
 
-async function getSongs() {
-  const response = await fetch(`${endpoint}/songs`);
-  const data = await response.json();
-  return data;
-}
+// async function getSongs() {
+//   const response = await fetch(`${endpoint}/songs`);
+//   const data = await response.json();
+//   return data;
+// }
 
 function showArtist(artist) {
   const html = /* html */ `
