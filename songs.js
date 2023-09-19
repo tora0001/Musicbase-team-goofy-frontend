@@ -5,8 +5,8 @@ const endpoint = "https://team-goofy-musicbase.azurewebsites.net";
 window.addEventListener("load", start);
 
 async function start() {
-  const artists = await getSongs();
-  showArtists(artists);
+  const songs = await getSongs();
+  showSongs(songs);
 }
 
 // async function getArtists() {
@@ -30,18 +30,17 @@ async function getSongs() {
 function showSong(song) {
   const html = /* html */ `
     <article>
-        <img src="${song.image}">
-        <p>${song.name}</p>
+        <p>${song.songName}</p>
         <button id= "btn-update" >Update</button>
         <button id= "btn-delete" >Delete</button>
     </article>`;
-  document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
+  document.querySelector("#songs").insertAdjacentHTML("beforeend", html);
 }
 
-function showArtists(artists) {
-  document.querySelector("#artists").innerHTML = "";
+function showSongs(songs) {
+  document.querySelector("#songs").innerHTML = "";
 
-  for (const artist of artists) {
-    showArtist(artist);
+  for (const song of songs) {
+    showSong(song);
   }
 }
