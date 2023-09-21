@@ -1,12 +1,13 @@
 "use strict";
 
-const endpoint = "https://team-goofy-musicbase.azurewebsites.net";
+// const endpoint = "https://team-goofy-musicbase.azurewebsites.net";
+const endpoint = "http://localhost:4000";
 
 window.addEventListener("load", start);
 
 async function start() {
-  const albums = await getAlbums();
-  showAlbums(albums);
+   const albums = await getAlbums();
+   showAlbums(albums);
 }
 
 // async function getArtists() {
@@ -16,9 +17,9 @@ async function start() {
 // }
 
 async function getAlbums() {
-  const response = await fetch(`${endpoint}/albums`);
-  const data = await response.json();
-  return data;
+   const response = await fetch(`${endpoint}/albums`);
+   const data = await response.json();
+   return data;
 }
 
 // async function getSongs() {
@@ -28,20 +29,20 @@ async function getAlbums() {
 // }
 
 function showAlbum(album) {
-  const html = /* html */ `
+   const html = /* html */ `
     <article>
         <img src="${album.image}">
         <p>${album.albumName}</p>
         <button id= "btn-update" >Update</button>
         <button id= "btn-delete" >Delete</button>
     </article>`;
-  document.querySelector("#albums").insertAdjacentHTML("beforeend", html);
+   document.querySelector("#albums").insertAdjacentHTML("beforeend", html);
 }
 
 function showAlbums(albums) {
-  document.querySelector("#albums").innerHTML = "";
+   document.querySelector("#albums").innerHTML = "";
 
-  for (const album of albums) {
-    showAlbum(album);
-  }
+   for (const album of albums) {
+      showAlbum(album);
+   }
 }
