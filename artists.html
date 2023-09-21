@@ -12,6 +12,53 @@
          <a href="albums.html">Albums</a>
          <a href="songs.html">Songs</a>
       </nav>
+      <section>
+        <form id="form-create-artist">
+          <h2>Create Artist</h2>
+            <label>Name <input type="text" name="name" required /></label>
+            <label>Image <input type="url" name="image" required /></label>
+            <label>Genre                
+              <select id="genre">
+                  <option>Pop</option>
+                  <option>Metal</option>
+                  <option>Rock</option>
+                  <option>Classical</option>
+                  <option>R&B</option>
+                  <option>Hip-Hop</option>
+                  <option>Rap</option>
+                  <option>Indie</option>
+                  <option>Country</option>
+                  <option>EDM</option>
+                  <option>Alternative</option>
+               </select></label>
+            <button id="btn-create-artist">Add Artist</button>
+            </br></br></br>
+        </form>
+      </section>
+
+      <dialog id="dialog-update-artist">
+        <form id="form-update-artist">
+          <h2>Update Artist</h2>
+            <label>Name <input type="text" name="name" required /></label></br></br>
+            <label>Image <input type="url" name="image" required /></label></br></br>
+            <label>Genre                
+              <select id="genre">
+                  <option>Pop</option>
+                  <option>Metal</option>
+                  <option>Rock</option>
+                  <option>Classical</option>
+                  <option>R&B</option>
+                  <option>Hip-Hop</option>
+                  <option>Rap</option>
+                  <option>Indie</option>
+                  <option>Country</option>
+                  <option>EDM</option>
+                  <option>Alternative</option>
+               </select></label></br></br>
+            <button id="btn-create-artist">Update Artist</button>
+            </br>
+        </form>
+      </dialog>
       <section id="artists"></section>
       <section id="albums"></section>
       <section id="songs"></section>
