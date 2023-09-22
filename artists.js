@@ -78,6 +78,8 @@ async function createArtist(event) {
 
 // update artist
 
+// setting values
+
 function updateArtist(artist) {
    selectedArtist = artist;
 
@@ -91,8 +93,9 @@ function updateArtist(artist) {
    document.querySelector("#dialog-update-artist").showModal();
 }
 
+// update by click
+
 async function updateClicked(event) {
-   console.log("test");
    event.preventDefault();
    const elements = document.querySelector("#form-update-artist").elements;
 
