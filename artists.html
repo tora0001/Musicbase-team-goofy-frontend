@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Musicbase</title>
-      <link rel="stylesheet" href="style.css" />
-   </head>
-   <body>
-      <nav>
-         <a class="active" href="artists.html">Artists</a>
-         <a href="albums.html">Albums</a>
-         <a href="songs.html">Songs</a>
-      </nav>
-      <section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musicbase</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <a class="active" href="artists.html">Artists</a>
+      <a href="albums.html">Albums</a>
+      <a href="songs.html">Songs</a>
+    </nav>
+    <div id="search-input">
+      <label for="input-search">search:</label>
+      <input type="search" id="input-search" />
+    </div>
+    <!-- <section>
         <form id="form-create-artist">
           <h2>Create Artist</h2>
             <label>Name <input type="text" name="name" required /></label>
@@ -58,10 +62,10 @@
             <button id="btn-create-artist">Update Artist</button>
             </br>
         </form>
-      </dialog>
-      <section id="artists"></section>
-      <section id="albums"></section>
-      <section id="songs"></section>
-      <script src="artists.js"></script>
-   </body>
+      </dialog> -->
+    <section id="artists"></section>
+    <section id="albums"></section>
+    <section id="songs"></section>
+    <script src="artists.js"></script>
+  </body>
 </html>
