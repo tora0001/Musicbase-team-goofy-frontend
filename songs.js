@@ -26,9 +26,8 @@ async function getSongs() {
 function showSong(song) {
   const html = /* html */ `
     <article>
-        <p>${song.songName}</p>
-        <button id= "btn-update" >Update</button>
-        <button id= "btn-delete" >Delete</button>
+        <h1>${song.songName}</h1>
+        <p>Duration: <b>${song.length}</b> minutes</p>
     </article>`;
   document.querySelector("#songs").insertAdjacentHTML("beforeend", html);
 }

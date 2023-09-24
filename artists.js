@@ -32,15 +32,14 @@ async function getArtists() {
 function showArtist(artist) {
   const html = /* html */ `
     <article>
+         <h1>${artist.name}</h1>
         <img src="${artist.image}">
-        <p>${artist.name}</p>
-        <button id= "btn-update" >Update</button>
-        <button id= "btn-delete" >Delete</button>
+        <p>Genre: ${artist.genre}</p>
     </article>`;
   document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
 
-  document.querySelector("#artists article:last-child #btn-update").addEventListener("click", () => updateArtist(artist));
-  document.querySelector("#artists article:last-child #btn-delete").addEventListener("click", () => deleteArtist(artist.id));
+  //   document.querySelector("#artists article:last-child #btn-update").addEventListener("click", () => updateArtist(artist));
+  //   document.querySelector("#artists article:last-child #btn-delete").addEventListener("click", () => deleteArtist(artist.id));
 }
 
 function showArtists(artists) {
@@ -53,88 +52,88 @@ function showArtists(artists) {
 
 // create artist
 
-async function createArtist(event) {
-  event.preventDefault();
-  const elements = document.querySelector("#form-create-artist").elements;
+// async function createArtist(event) {
+//   event.preventDefault();
+//   const elements = document.querySelector("#form-create-artist").elements;
 
-  const artist = {
-    name: elements.name.value,
-    image: elements.image.value,
-    genre: elements.genre.value,
-  };
+//   const artist = {
+//     name: elements.name.value,
+//     image: elements.image.value,
+//     genre: elements.genre.value,
+//   };
 
-  const json = JSON.stringify(artist);
-  const response = await fetch(`${endpoint}/artists`, {
-    method: "POST",
-    body: json,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+//   const json = JSON.stringify(artist);
+//   const response = await fetch(`${endpoint}/artists`, {
+//     method: "POST",
+//     body: json,
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
 
-  if (response.ok) {
-    console.log("artist added");
-    updateGrid();
-  }
-}
+//   if (response.ok) {
+//     console.log("artist added");
+//     updateGrid();
+//   }
+// }
 
 // update artist
 
 // setting values
 
-function updateArtist(artist) {
-  selectedArtist = artist;
+// function updateArtist(artist) {
+//   selectedArtist = artist;
 
-  const update = document.querySelector("#form-update-artist");
-  update.name.value = artist.name;
-  update.image.value = artist.image;
-  update.genre.value = artist.genre;
+//   const update = document.querySelector("#form-update-artist");
+//   update.name.value = artist.name;
+//   update.image.value = artist.image;
+//   update.genre.value = artist.genre;
 
-  console.log(selectedArtist);
+//   console.log(selectedArtist);
 
-  document.querySelector("#dialog-update-artist").showModal();
-}
+//   document.querySelector("#dialog-update-artist").showModal();
+// }
 
 // update by click
 
-async function updateClicked(event) {
-  event.preventDefault();
-  const elements = document.querySelector("#form-update-artist").elements;
+// async function updateClicked(event) {
+//   event.preventDefault();
+//   const elements = document.querySelector("#form-update-artist").elements;
 
-  const artist = {
-    name: elements.name.value,
-    image: elements.image.value,
-    genre: elements.genre.value,
-  };
+//   const artist = {
+//     name: elements.name.value,
+//     image: elements.image.value,
+//     genre: elements.genre.value,
+//   };
 
-  const json = JSON.stringify(artist);
-  const response = await fetch(`${endpoint}/artists/${selectedArtist.id}`, {
-    method: "PUT",
-    body: json,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+//   const json = JSON.stringify(artist);
+//   const response = await fetch(`${endpoint}/artists/${selectedArtist.id}`, {
+//     method: "PUT",
+//     body: json,
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
 
-  if (response.ok) {
-    console.log("artist updated");
-    updateGrid();
-  }
+//   if (response.ok) {
+//     console.log("artist updated");
+//     updateGrid();
+//   }
 
-  document.querySelector("#dialog-update-artist").close();
-}
+//   document.querySelector("#dialog-update-artist").close();
+// }
 
 // delete artist
 
-async function deleteArtist(id) {
-  const response = await fetch(`${endpoint}/artists/${id}`, {
-    method: "DELETE",
-  });
-  if (response.ok) {
-    console.log("artist deleted");
-    updateGrid();
-  }
-}
+// async function deleteArtist(id) {
+//   const response = await fetch(`${endpoint}/artists/${id}`, {
+//     method: "DELETE",
+//   });
+//   if (response.ok) {
+//     console.log("artist deleted");
+//     updateGrid();
+//   }
+// }
 
 //search function
 

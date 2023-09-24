@@ -26,10 +26,9 @@ async function getAlbums() {
 function showAlbum(album) {
   const html = /* html */ `
     <article>
+         <h1>${album.albumName}</h1>
         <img src="${album.image}">
-        <p>${album.albumName}</p>
-        <button id= "btn-update" >Update</button>
-        <button id= "btn-delete" >Delete</button>
+        <p>Release year: ${album.releaseYear}</p>
     </article>`;
   document.querySelector("#albums").insertAdjacentHTML("beforeend", html);
 }
