@@ -4,7 +4,4 @@
 
 [Backend-repository](https://github.com/tora0001/Musicbase-team-goofy-backend)
 
-Links til databasen:
-[Artists](https://team-goofy-musicbase.azurewebsites.net/artists)
-[Albums](https://team-goofy-musicbase.azurewebsites.net/albums)
-[Songs](https://team-goofy-musicbase.azurewebsites.net/songs)
+[Azure-server](https://team-goofy-musicbase.azurewebsites.net) Brug de forskellige routes i app.js fra backend-repository for at navigere rundt
