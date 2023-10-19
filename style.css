@@ -63,6 +63,7 @@ article img {
   max-width: 400px;
   max-height: 150px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 button {
@@ -92,4 +93,44 @@ button:hover {
   #input-search {
     width: 100%;
   }
+}
+
+.dialog-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 20px;
+  background-color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-align: center;
+}
+
+.dialog-window h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.dialog-window img {
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+.dialog-window p {
+  margin: 10px 0;
+}
+
+.dialog-window button {
+  background-color: #1db954;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.dialog-window button:hover {
+  background-color: #555;
 }

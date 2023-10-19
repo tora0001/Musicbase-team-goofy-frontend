@@ -1,7 +1,26 @@
 "use strict";
 
+class Song {
+  constructor(songName, length) {
+    this.songName = songName;
+    this.length = length;
+  }
+
+  // Metode til at vise kunstnerens oplysninger i griddet
+  display() {
+    const html = /* html */ `
+      <article>
+        <h1>${this.songName}</h1>
+        <p>${this.length} Minutes</p>
+      </article>`;
+    document.querySelector("#songs").insertAdjacentHTML("beforeend", html);
+  }
+}
+
 const endpoint = "https://team-goofy-musicbase.azurewebsites.net";
 // const endpoint = "http://localhost:4000";
+
+let selectedSong;
 
 window.addEventListener("load", start);
 
@@ -20,23 +39,13 @@ async function updateGrid() {
 async function getSongs() {
   const response = await fetch(`${endpoint}/songs`);
   const data = await response.json();
-  return data;
-}
-
-function showSong(song) {
-  const html = /* html */ `
-    <article>
-        <h1>${song.songName}</h1>
-        <p>Duration: <b>${song.length}</b> minutes</p>
-    </article>`;
-  document.querySelector("#songs").insertAdjacentHTML("beforeend", html);
+  return data.map((songData) => new Song(songData.songName, songData.length));
 }
 
 function showSongs(songs) {
   document.querySelector("#songs").innerHTML = "";
-
   for (const song of songs) {
-    showSong(song);
+    song.display();
   }
 }
 
