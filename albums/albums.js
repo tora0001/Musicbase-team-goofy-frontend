@@ -1,23 +1,5 @@
 "use strict";
-
-class Album {
-  constructor(albumName, image, releaseYear) {
-    this.albumName = albumName;
-    this.image = image;
-    this.releaseYear = releaseYear;
-  }
-
-  // Metode til at vise kunstnerens oplysninger i grid
-  display() {
-    const html = /* html */ `
-      <article>
-        <h1>${this.albumName}</h1>
-        <img src="${this.image}">
-        <p>Release year: ${this.releaseYear}</p>
-      </article>`;
-    document.querySelector("#albums").insertAdjacentHTML("beforeend", html);
-  }
-}
+import { Album } from "../objects.js";
 
 const endpoint = "https://team-goofy-musicbase.azurewebsites.net";
 // const endpoint = "http://localhost:4000";
@@ -30,8 +12,12 @@ async function start() {
   updateGrid();
 
   document.querySelector("#albums").addEventListener("click", albumClicked);
-  document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
-  document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
+  document
+    .querySelector("#input-search")
+    .addEventListener("keyup", inputSearchChanged);
+  document
+    .querySelector("#input-search")
+    .addEventListener("search", inputSearchChanged);
 }
 
 async function updateGrid() {
@@ -42,7 +28,10 @@ async function updateGrid() {
 async function getAlbums() {
   const response = await fetch(`${endpoint}/albums`);
   const data = await response.json();
-  return data.map((albumData) => new Album(albumData.albumName, albumData.image, albumData.releaseYear));
+  return data.map(
+    (albumData) =>
+      new Album(albumData.albumName, albumData.image, albumData.releaseYear)
+  );
 }
 
 function showAlbums(albums) {
@@ -82,6 +71,8 @@ async function inputSearchChanged(event) {
   console.log("Searching");
   const query = event.target.value.toLowerCase();
   const albums = await getAlbums();
-  const filteredAlbums = albums.filter((album) => album.albumName.toLowerCase().includes(query));
+  const filteredAlbums = albums.filter((album) =>
+    album.albumName.toLowerCase().includes(query)
+  );
   showAlbums(filteredAlbums);
 }

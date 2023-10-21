@@ -1,23 +1,5 @@
 "use strict";
-
-class Artist {
-  constructor(name, image, genre) {
-    this.name = name;
-    this.image = image;
-    this.genre = genre;
-  }
-
-  // Metode til at vise kunstnerens oplysninger i griddet
-  display() {
-    const html = /* html */ `
-      <article>
-        <h1>${this.name}</h1>
-        <img src="${this.image}">
-        <p>Genre: ${this.genre}</p>
-      </article>`;
-    document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
-  }
-}
+import { Artist } from "../objects.js";
 
 const endpoint = "https://team-goofy-musicbase.azurewebsites.net";
 // const endpoint = "http://localhost:4000";
@@ -29,8 +11,12 @@ window.addEventListener("load", start);
 async function start() {
   updateGrid();
   document.querySelector("#artists").addEventListener("click", artistClicked);
-  document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
-  document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
+  document
+    .querySelector("#input-search")
+    .addEventListener("keyup", inputSearchChanged);
+  document
+    .querySelector("#input-search")
+    .addEventListener("search", inputSearchChanged);
 }
 
 async function updateGrid() {
@@ -41,7 +27,10 @@ async function updateGrid() {
 async function getArtists() {
   const response = await fetch(`${endpoint}/artists`);
   const data = await response.json();
-  return data.map((artistData) => new Artist(artistData.name, artistData.image, artistData.genre));
+  return data.map(
+    (artistData) =>
+      new Artist(artistData.name, artistData.image, artistData.genre)
+  );
 }
 
 function showArtists(artists) {
@@ -81,6 +70,8 @@ async function inputSearchChanged(event) {
   console.log("Searching");
   const query = event.target.value.toLowerCase();
   const artists = await getArtists();
-  const filteredArtists = artists.filter((artist) => artist.name.toLowerCase().includes(query));
+  const filteredArtists = artists.filter((artist) =>
+    artist.name.toLowerCase().includes(query)
+  );
   showArtists(filteredArtists);
 }
