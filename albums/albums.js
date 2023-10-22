@@ -17,8 +17,6 @@ async function start() {
    document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
    document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
 
-   console.log(albums);
-
    const albumList = ListRenderer.construct(albums, "#albums", AlbumRenderer);
    albumList.render();
 }
