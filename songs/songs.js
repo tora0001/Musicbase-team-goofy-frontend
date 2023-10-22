@@ -10,25 +10,30 @@ let selectedSong;
 window.addEventListener("load", start);
 
 async function start() {
-   const songs = await getSongs();
+  showSongs();
+}
 
-   document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
-   document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
+async function showSongs() {
+  const songs = await getSongs();
 
-   const songList = ListRenderer.construct(songs, "#songs", SongRenderer);
-   songList.render();
+  const songList = ListRenderer.construct(
+    songs,
+    "#songs",
+    SongRenderer,
+    "songName"
+  );
+  songList.render();
+
+  //search event
+  document.querySelector("#input-search").addEventListener("keyup", (event) => {
+    const query = event.target.value;
+    console.log("searchin");
+    songList.search(query);
+  });
 }
 
 async function getSongs() {
-   const response = await fetch(`${endpoint}/songs`);
-   const data = await response.json();
-   return data;
-}
-
-async function inputSearchChanged(event) {
-   console.log("Searching");
-   const query = event.target.value.toLowerCase();
-   const songs = await getSongs();
-   const filteredSongs = songs.filter((song) => song.songName.toLowerCase().includes(query));
-   showSongs(filteredSongs);
+  const response = await fetch(`${endpoint}/songs`);
+  const data = await response.json();
+  return data;
 }
