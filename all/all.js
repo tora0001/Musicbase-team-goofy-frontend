@@ -11,16 +11,9 @@ window.addEventListener("load", start);
 
 async function start() {
   updateGrid();
-  console.log(Album);
 
   document.querySelector("#albums").addEventListener("click", albumClicked);
   document.querySelector("#artists").addEventListener("click", artistClicked);
-  document
-    .querySelector("#input-search")
-    .addEventListener("keyup", inputSearchChanged);
-  document
-    .querySelector("#input-search")
-    .addEventListener("search", inputSearchChanged);
 }
 
 // read data
@@ -28,51 +21,32 @@ async function start() {
 async function getArtists() {
   const response = await fetch(`${endpoint}/artists`);
   const data = await response.json();
-  return data;
-}
-
-function showArtist(artist) {
-  const html = /* html */ `
-    <article>
-         <h1>${artist.name}</h1>
-        <img src="${artist.image}">
-        <p>Genre: ${artist.genre}</p>
-    </article>`;
-  document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
-
-  //   document.querySelector("#artists article:last-child #btn-update").addEventListener("click", () => updateArtist(artist));
-  //   document.querySelector("#artists article:last-child #btn-delete").addEventListener("click", () => deleteArtist(artist.id));
+  return data.map(
+    (artistData) =>
+      new Artist(artistData.name, artistData.image, artistData.genre)
+  );
 }
 
 function showArtists(artists) {
   document.querySelector("#artists").innerHTML = "";
-
   for (const artist of artists) {
-    showArtist(artist);
+    artist.display();
   }
 }
 
 async function getAlbums() {
   const response = await fetch(`${endpoint}/albums`);
   const data = await response.json();
-  return data;
-}
-
-function showAlbum(album) {
-  const html = /* html */ `
-    <article>
-         <h1>${album.albumName}</h1>
-        <img src="${album.image}">
-        <p>Release year: ${album.releaseYear}</p>
-    </article>`;
-  document.querySelector("#albums").insertAdjacentHTML("beforeend", html);
+  return data.map(
+    (albumData) =>
+      new Album(albumData.albumName, albumData.image, albumData.releaseYear)
+  );
 }
 
 function showAlbums(albums) {
   document.querySelector("#albums").innerHTML = "";
-
   for (const album of albums) {
-    showAlbum(album);
+    album.display();
   }
 }
 
